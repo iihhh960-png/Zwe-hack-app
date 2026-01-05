@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; font-family: sans-serif; }
+        iframe { width: 100vw; height: 100vh; border: none; }
+        #loginArea { position: fixed; top: 10%; left: 50%; transform: translateX(-50%); z-index: 1000; background: rgba(0,0,0,0.9); padding: 20px; border-radius: 15px; border: 2px solid #00f2ea; text-align: center; width: 80%; max-width: 300px; }
+        #passInput { padding: 12px; width: 80%; background: #111; color: #fff; border: 1px solid #00f2ea; border-radius: 8px; margin-bottom: 15px; outline: none; text-align: center; }
+        #loginBtn { padding: 12px 30px; background: #00f2ea; color: #000; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 90%; }
+        #hackBtn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #00f2ea; border-radius: 50%; display: none; justify-content: center; align-items: center; cursor: pointer; box-shadow: 0 0 20px #00f2ea; z-index: 999; }
+    </style>
+</head>
+<body>
+
+<div id="loginArea">
+    <h3 style="color:#00f2ea; margin-top:0;">ADMIN LOGIN</h3>
+    <input type="password" id="passInput" placeholder="Enter Password">
+    <button id="loginBtn">LOGIN</button>
+</div>
+
+<div id="hackBtn">
+    <svg viewBox="0 0 24 24" width="30" fill="none" stroke="#000" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+</div>
+
+<iframe id="gameFrame" src="https://www.777bigwingame.cc/#/register?invitationCode=53745102445"></iframe>
+
+<script>
+    const MY_PASSWORD = "123"; // ဤနေရာတွင် Password ပြောင်းနိုင်ပါသည်
+    const lBtn = document.getElementById("loginBtn");
+    const pInp = document.getElementById("passInput");
+    const lArea = document.getElementById("loginArea");
+    const hBtn = document.getElementById("hackBtn");
+
+    lBtn.onclick = () => {
+        if(pInp.value === MY_PASSWORD) {
+            lArea.style.display = "none";
+            hBtn.style.display = "flex";
+            alert("Login Success!");
+        } else {
+            alert("Password Incorrect!");
+        }
+    };
+
+    hBtn.onclick = () => {
+        alert("Hack System Activated!");
+    };
+</script>
+</body>
+</html>
