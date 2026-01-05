@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>TRX HASH PRO - V5 FULL PERIOD</title>
+<style>
+:root {
+  --primary: #00f2ea;
+  --secondary: #8a2be2;
+  --accent: #ff0050;
+  --bg: #0a0a0f;
+  --text: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; user-select: none; }
+
+body {
+  background: var(--bg);
+  height: 100vh;
+  overflow: hidden;
+  color: var(--text);
+}
+
+iframe { width: 100%; height: 100%; border: 0; position: fixed; inset: 0; z-index: 1; }
+#hackFrame { z-index: 10; background: var(--bg); display: none; overflow-y: auto; }
+
+#loginArea {
+  position: fixed; top: 20px; right: 20px; z-index: 1000;
+  background: rgba(0,0,0,0.85); padding: 10px; border-radius: 12px;
+  border: 1px solid var(--primary); display: flex; gap: 8px;
+  backdrop-filter: blur(5px);
+}
+#passInput {
+  padding: 8px; width: 110px; background: #000; color: #fff;
+  border: 1px solid var(--primary); border-radius: 6px; font-size: 12px; outline: none;
+}
+#loginBtn {
+  padding: 8px 15px; background: var(--primary); color: #000;
+  border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px;
+}
+
+.hack-float-btn {
+    position: fixed; bottom: 30px; right: 25px;
+    width: 60px; height: 60px;
+    background: var(--primary);
+    border-radius: 50%; display: none; align-items: center; justify-content: center;
+    box-shadow: 0 0 20px var(--primary); z-index: 101; cursor: pointer;
+}
+
+#backBtn { bottom: 30px; left: 25px; background: var(--accent); box-shadow: 0 0 20px var(--accent); display:none; }
+</style>
+</head>
+<body>
+
+<iframe id="gameFrame" src="https://www.777bigwingame.bet/#/register?invitationCode=31581651122"></iframe>
+<iframe id="hackFrame"></iframe>
+
+<div id="loginArea">
+  <input type="password" id="passInput" placeholder="Password">
+  <button id="loginBtn">LOGIN</button>
+</div>
+
+<div id="hackBtn" class="hack-float-btn"><svg viewBox="0 0 24 24" width="30" fill="none" stroke="#000" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+<div id="backBtn" class="hack-float-btn"><svg viewBox="0 0 24 24" width="30" fill="none" stroke="#fff" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg></div>
+
+<script>
+const HACK_PAGE_HTML = `
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    :root { --p: #00f2ea; --s: #8a2be2; --b: #ffcc00; --sm: #00d9ff; }
+    body { background: #0a0a0f; color: #fff; font-family: sans-serif; padding: 15px; text-align: center; }
+    .main-card { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 20px; border: 1px solid var(--p); margin-top: 20px; }
+    .pred-txt { font-size: 40px; font-weight: bold; margin: 20px 0; }
+    .big { color: var(--b); }
+    .small { color: var(--sm); }
+</style>
+</head>
+<body>
+    <h2 style="color:var(--p)">TRX HASH PREDICTOR</h2>
+    <div class="main-card">
+        <div>PERIOD: <span id="nextI">...</span></div>
+        <div id="pred" class="pred-txt">WAIT</div>
+        <div style="color:#888">NEXT DRAW IN: <span id="timer">00</span>s</div>
+    </div>
+<script>
+    const API = "https://draw.ar-lottery01.com/TrxWinGo/TrxWinGo_1M/GetHistoryIssuePage.json";
+    async function update() {
+        try {
+            const r = await fetch(API + "?t=" + Date.now());
+            const d = await r.json();
+            const list = d.data.list;
+            document.getElementById('nextI').innerText = (BigInt(list[0].issueNumber) + 1n).toString();
+            let pNum = parseInt(list[0].issueNumber.slice(-3));
+            let res = (pNum % 2 === 0) ? "BIG" : "SMALL";
+            document.getElementById('pred').innerText = res;
+            document.getElementById('pred').className = "pred-txt " + res.toLowerCase();
+        } catch(e) {}
+    }
+    setInterval(() => { 
+        let s = new Date().getSeconds(); 
+        document.getElementById('timer').innerText = (60-s);
+        if(s === 1) update(); 
+    }, 1000);
+    update();
+<\/script>
+</body>
+</html>
+`;
+
+const loginArea = document.getElementById("loginArea"),
+      loginBtn = document.getElementById("loginBtn"),
+      passInput = document.getElementById("passInput"),
+      hackBtn = document.getElementById("hackBtn"),
+      backBtn = document.getElementById("backBtn"),
+      gf = document.getElementById("gameFrame"),
+      hf = document.getElementById("hackFrame");
+
+// Updated Password
+const MY_PASSWORD = "zwe114"; 
+
+loginBtn.onclick = () => {
+    if(passInput.value === MY_PASSWORD) {
+        alert("Login Success!");
+        loginArea.style.display = "none";
+        hackBtn.style.display = "flex";
+    } else {
+        alert("Password မှားယွင်းနေပါသည်။");
+    }
+};
+
+hackBtn.onclick = () => { 
+    gf.style.display="none"; 
+    hackBtn.style.display="none"; 
+    hf.style.display="block"; 
+    backBtn.style.display="flex"; 
+    hf.srcdoc = HACK_PAGE_HTML; 
+};
+
+backBtn.onclick = () => { 
+    hf.style.display="none"; 
+    backBtn.style.display="none"; 
+    gf.style.display="block"; 
+    hackBtn.style.display="flex";
+};
+</script>
+</body>
+</html>
